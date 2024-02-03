@@ -8,6 +8,7 @@ originalfolder="/original/"
 backupfolder="/backup/"
 binfolder="/temp/delete/"
 m4bend=".m4b"
+mp3end=".mp3"
 logend=".log"
 
 #change to the merge folder, keeps this clear and the script could be kept inside the container
@@ -47,6 +48,7 @@ while [ $n -ge 0 ]; do
 			if [ -d "$book" ]; then
 				mpthree=$(find . -maxdepth 2 -type f -name "*.mp3" | head -n 1)
 				m4bfile=$outputfolder$book$m4bend
+    				mp3file=$outputfolder$book$mp3end
 				logfile=$outputfolder$book$logend
 				echo Sampling $mpthree
 				bit=$(ffprobe -hide_banner -loglevel 0 -of flat -i "$mpthree" -select_streams a -show_entries format=bit_rate -of default=noprint_wrappers=1:nokey=1)
